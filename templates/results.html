@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Results</h1>
+        <h2>Model: {{ predictions.iloc[0].Model }}</h2>
+        <img src="{{ plot_path }}" alt="Prediction Plot" width="100%">
+        <h3>Predictions:</h3>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Predicted GLD Price</th>
+            </tr>
+            {% for index, row in predictions.iterrows() %}
+            <tr>
+                <td>{{ row.Date }}</td>
+                <td>{{ row.Prediction }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>
